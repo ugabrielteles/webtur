@@ -1,6 +1,7 @@
 import Fastify from "fastify"
 import cors from "@fastify/cors"
 import jwt from "@fastify/jwt"
+import { rolesRoutes } from "./routes/roles"
 
 
 async function bootstrap() {
@@ -15,7 +16,8 @@ async function bootstrap() {
     await fastify.register(jwt, {
       secret: 'aJOchQr3d9',
     })
-  
+    
+    await fastify.register(rolesRoutes)
     
   
     await fastify.listen({ port: 3333, host: '0.0.0.0' })
